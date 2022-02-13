@@ -1,10 +1,6 @@
-# Welcome to the CS425-FA21 MP1's repository!
+# distributed_bank_system
 
-Team members:  **Linfei Jing** (netid: ljing2), **Ziyang Ye** (netid: ziyangy2).
-
-Cluster number is **g02**.
-
-This MP is implemented via Go programming language and Python(for the graph). If you would like to test the code, please make sure you already have Go installed on your computer. We are using Go of version 1.17.1 in this MP.
+This project is implemented via Go programming language and Python(for the analysis). If you would like to test the code, please make sure you already have Go installed on your computer. We are using Go of version 1.17.1 in this project.
 
 ## Building and Running
 After you clone this repository to your computer, please follow the steps listed below to test and obtain the graph.
@@ -16,8 +12,8 @@ Build the code for executable files by following command in the root directory:
 go build
 ```
 **Node**
-
-This MP tests the functionality under different scenarios. Each scenario requires a different number of nodes and transaction generation frequency.
+The node in this project represent each branch of a bank. For different bide(branch), we will have different operations.
+This project tests the functionality under different scenarios. Each scenario requires a different number of nodes and transaction generation frequency.
 
 1. 3 nodes, 0.5 Hz each, running for 100 seconds
 2. 8 nodes, 5 Hz each, running for 100 seconds
@@ -30,20 +26,20 @@ Run the following general command to pipe the output of "gentx.py" to each node 
 python3 -u gentx.py [frequency] | ./mp1_node [node name] [port name] [config file name]
 (i.e. python3 -u gentx.py 0.5 | ./mp1_node node1 1234 config1.txt)
 ```
-We have tested the functionality of this MP by running the shell script in the virtual machine (VM). We put the shell scripts in the *remotesh* directory. The shell script will kill the processes after 100s or 200s, depending on the testing scenario. To test with the shell script, run the following command for 3 nodes, 3 nodes with failure, 8 nodes, and 8 nodes with failure in VM's terminal, respectively. 
+We have tested the functionality of this project by running the shell script in the virtual machine (VM). We put the shell scripts in the *remotesh* directory. The shell script will kill the processes after 100s or 200s, depending on the testing scenario. To test with the shell script, run the following command for 3 nodes, 3 nodes with failure, 8 nodes, and 8 nodes with failure in VM's terminal, respectively. 
 
 ```
 sh 3nodes1/2/3.sh / sh f3nodes1/2/3.sh / sh 8nodes1/2/3/4/5/6/7/8.sh / sh f8nodes1/2/3/4/5/6/7/8.sh
 (i.e. sh f8nodes5.sh for node5 under scenario of 8 nodes with failure)
 ```
-**Graph Generation**
+**Analysis Graph Generation**
 The graphs for each scenario are in the graph directory under the stat directory. To generate the graphs, first put all the *.txt* files of data collected in the program in the stat directory, and run the *Graphs.ipynb*. In the *Graphs.ipynb*, run the graph generation block under different labels for different graphs. The graphs will be saved in the graph directory automatically. 
 
 **Design Document**
 
 * Scope 
 
-	In this MP, we are supposed to design a transaction back system. In this system, we need to keep track of each account activity. Each account with an initial balance of 0 can either deposit to his/her account or transfer money to other accounts. Each account should have a non-negative integer balance after the transaction. Otherwise, the transaction will not be allowed. After each transaction, the balance will be printed with the account name sorted alphabetically. 
+	In this project, we are supposed to design a transaction back system. In this system, we need to keep track of each account activity. Each account with an initial balance of 0 can either deposit to his/her account or transfer money to other accounts. Each account should have a non-negative integer balance after the transaction. Otherwise, the transaction will not be allowed. After each transaction, the balance will be printed with the account name sorted alphabetically. 
 
 * Algorithm Design
 
